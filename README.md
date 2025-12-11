@@ -4,7 +4,7 @@ Active window border replacement for window managers, now with fading borders fo
 This is a 3rd degree fork of [deter0/xborder](https://github.com/deter0/xborder). 
 1. [deter0/xborder](https://github.com/deter0/xborder)
 2. lunegh/xborder(s?) (missing)
-3. [](https://github.com/rockyroed/xborders)
+3. [rockyroed/xborders](https://github.com/rockyroed/xborders)
 4. [Ari-43/xborders](https://github.com/Ari-43/xborders) (this)
 
 ## Usage

@@ -636,7 +636,8 @@ def main():
 if __name__ in  ["__main__", "xborders.main", "src.xborders.main"]:
     try:
         script_dir = os.path.dirname(os.path.realpath(__file__))
-        lock = zc.lockfile.LockFile(os.path.join(script_dir, '.lock'))
+        # TODO: Find out where the proper distro-agnostic place to put a lockfile like this is
+        lock = zc.lockfile.LockFile(os.path.join(script_dir, '/tmp/xborders.lock'))
         main()
     except KeyboardInterrupt:
         exit(0)

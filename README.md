@@ -1,21 +1,27 @@
 # xborders
-Active window border replacement for window managers, now with fading borders for a cleaner look.
+Active window border replacement for window managers with extra features:
+- Fading borders
+- Gradient borders
+- `pip` install support
 
 This is a 3rd degree fork of [deter0/xborder](https://github.com/deter0/xborder). 
 1. [deter0/xborder](https://github.com/deter0/xborder)
-2. lunegh/xborder(s?) (missing)
+2. lunegh/xborders (missing)
 3. [rockyroed/xborders](https://github.com/rockyroed/xborders)
 4. [Ari-43/xborders](https://github.com/Ari-43/xborders) (this)
+
+It includes code from the following other forks not in this lineage: 
+- [fun840/xborder](https://github.com/fun840/xborder) (gradients)
 
 ## Usage
 **Install with pipx (recommended)**
 ```sh
-pipx install git+https://github.com/lunegh/xborders
+pipx install git+https://github.com/Ari-43/xborders
 xborders --help
 ```
 **Or clone the repository**
 ```sh
-git clone https://github.com/lunegh/xborders
+git clone https://github.com/Ari-43/xborders
 cd xborders
 pip install -r requirements.txt
 chmod +x xborders
@@ -34,30 +40,32 @@ Make sure to install dependencies first! `pip install -r requirements.txt`
 **System dependencies**
 * libwnck (Tested with version 40.1-1, Arch: `sudo pacman -S libwnck3` Debian: `sudo apt install libwnck-3-0` NOTE: may need 'libwnck-3-0-dev' for Debian)
 * gtk
-* a compositor that supports transparent windows ([picom](https://github.com/yshui/picom) is what I am using)
+* a compositor that supports transparent windows (i.e. [picom](https://github.com/yshui/picom))
 
 Manually installing **Python dependencies** is **not required when installing with pipx**.
 
 ### Recommended Dependencies
 * libnotify (Debian: `sudo apt install libnotify-bin` Arch: `sudo pacman -S libnotify`)
 
-### Note for compositor
-If you don't want your entire screen blurred please add `role = 'xborder'` to your blur-exclude!
+### Note for Picom
+If you don't want your entire screen blurred, add the following to your `picom.conf` in the window `rules` section
 ```
-blur-background-exclude = [
-  # prevents picom from blurring the background
-  "role   = 'xborder'",
-  ...
-];
+rules = (
+	{ role = "xborder";
+		# Exempt xborder from background blur
+		blur-background = false;
+	},
+	...
+)
 ```
 
-## xborders on top of i3:
+## i3 w/ xborder rounded borders:
 ![image](https://user-images.githubusercontent.com/82973108/160370439-8b7a5feb-c186-4954-a029-b718b59fd957.png)
-## i3 default:
+## i3 w/ Picom rounded borders:
 ![image](https://user-images.githubusercontent.com/82973108/160370578-3ea7e3e9-723a-4054-b7b0-2b0110d809c0.png)
 
 ### Config
-Configuration options can be found by passing in the argument `--help` on the command line, or by specifying a config file with the argument `-c`. If no config file is specified with the `-c` argument, xborders will look for one at ~/.config/xborders/xborders.json. However, it will not create the file if it is missing.
+Configuration options can be found by passing in the argument `--help` on the command line, or by specifying a config file with the argument `-c`. If no config file is specified with the `-c` argument, xborders will look for one at `~/.config/xborders/xborders.json`. However, it will not create the file if it is missing. 
 
 The config file is just a simple json file with the keys being the same as the command-line arguments (except without the "--" at the beginning).
 # Updating
